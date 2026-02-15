@@ -1,0 +1,149 @@
+/* Cart.css */
+
+.cart {
+    min-height: 100vh;
+    padding: 50px;
+    background-color: #fff;
+    font-family: 'Inter', sans-serif;
+    color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.cart__content {
+    width: 90%;
+    max-width: 1200px;
+}
+
+.cart__title {
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+}
+
+.cart__empty {
+    font-size: 24px;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.cart__table {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.cart__row {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    padding: 20px;
+    border: 2px solid #000;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    position: relative;
+}
+
+.cart__image {
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.cart__info {
+    flex: 1;
+}
+
+.cart__name {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.cart__size {
+    font-size: 22px;
+    color: #555;
+}
+
+.cart__qty {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 24px;
+}
+
+.cart__qty button {
+    width: 50px;
+    height: 50px;
+    font-size: 28px;
+    border: 1px solid #000;
+    background: #fff;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.cart__qty button:hover {
+    background: #000;
+    color: #fff;
+}
+
+.cart__qty span {
+    width: 50px;
+    text-align: center;
+    font-size: 28px;
+}
+
+.cart__price {
+    font-size: 28px;
+    font-weight: 600;
+    min-width: 120px;
+    text-align: right;
+}
+
+.cart__remove {
+    font-size: 32px;
+    border: none;
+    background: none;
+    color: #000;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: absolute;
+    top: 5px;
+    right: 10px;
+}
+
+.cart__remove:hover {
+    color: #f00;
+}
+
+.cart__total {
+    display: flex;
+    justify-content: space-between;
+    font-size: 32px;
+    font-weight: 700;
+    margin-top: 30px;
+    border-top: 2px solid #000;
+    padding-top: 20px;
+}
+
+.cart__checkout {
+    margin-top: 30px;
+    width: 100%;
+    padding: 20px;
+    font-size: 22px;
+    font-weight: 700;
+    border: 2px solid #000;
+    background: #000;
+    color: #fff;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: all 0.2s;
+}
+
+.cart__checkout:hover {
+    background: #fff;
+    color: #000;
+}

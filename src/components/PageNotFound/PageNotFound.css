@@ -1,0 +1,12 @@
+.page-not-found {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto 0;
+}
+
+.page-not-found__title {
+    font-size: 48px;
+    text-align: center;
+    margin: auto 0;
+}

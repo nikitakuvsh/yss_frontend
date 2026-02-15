@@ -96,11 +96,13 @@
 }
 
 /* Hover размера */
-.product-card__size:hover {
+.product-card__size:hover,
+.product-card__size.selected {
     background: #000;
     color: #fff;
     border: 1px solid white;
 }
+
 
 /* Кнопка */
 .product-card__button {

@@ -11,7 +11,7 @@ export default function UnderHeader() {
 
     useEffect(() => {
         let index = 0;
-        const speed = 70; // время между буквами в мс, можно регулировать
+        const speed = 70; // время между буквами в мс
         const timer = setInterval(() => {
             setDisplayedText(fullText.slice(0, index + 1));
             index++;

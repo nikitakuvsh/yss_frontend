@@ -1,0 +1,160 @@
+.product__wrapper {
+    display: flex;
+    gap: 30px;
+    padding: 50px;
+}
+
+/* Слева: миниатюры */
+.product__thumbnails {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.product__thumbnail {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    cursor: pointer;
+    border: 1px solid black;
+    transition: border 0.2s;
+    padding: 5px;
+}
+
+/* Среднее окно: большая фотография с лупой */
+.product__main-image-wrapper {
+    position: relative;
+    max-width: 45%;
+    max-height: 45%;
+    overflow: hidden;
+    cursor: zoom-in;
+    border: 1px solid black;
+    flex-grow: 1;
+}
+
+.product__main-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.product__zoom {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 200%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    background-size: 200% 200%;
+}
+
+/* Справа: размеры и кнопка */
+.product__actions {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* распределяем контент: описание сверху, размеры и кнопка снизу */
+    flex-grow: 1; /* чтобы блок занимал всю высоту родителя */
+    width: 300px; /* фиксированная ширина правой панели */
+    height: 100%; /* растягиваем на всю высоту обертки */
+}
+
+
+.product__sizes {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 10%;
+}
+
+.product__size-button {
+    padding: 10px 20px;
+    border: 1px solid #333;
+    background: #fff;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.product__size-button.selected {
+    background: #000000;
+    color: #fff;
+    border-color: #ffffff;
+}
+
+.product__add-to-cart {
+    padding: 15px 25px;
+    border: none;
+    background: #090909;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.15s ease-in-out;
+    border-radius: 6px;
+    width: 100%;
+    margin-top: 30px;
+}
+
+.product__add-to-cart:hover {
+    background: #fff;
+    color: #090909;
+    border: 1px solid black;
+}
+
+.product__add-to-cart:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+.product__description,
+.product__delivery {
+    margin-top: 20px;
+    font-size: 18px;
+    line-height: 1.5;
+    color: #333;
+}
+
+.product__description p {
+    margin-bottom: 10px;
+}
+
+.product__description h4,
+.product__delivery h4 {
+    margin-bottom: 8px;
+    font-size: 24px;
+    color: #000;
+    text-transform: uppercase;
+}
+
+/* Занимаем весь экран */
+.product {
+    min-height: 100vh; /* высота равна экрану */
+    display: flex;
+    align-items: stretch;
+}
+
+/* Обертка */
+.product__wrapper {
+    display: flex;
+    gap: 30px;
+    padding: 50px;
+    width: 100%;
+    height: 100%; /* растягиваем на всю высоту родителя */
+}
+
+/* Слева: миниатюры */
+.product__thumbnails {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Среднее окно: большая фотография с лупой */
+.product__main-image-wrapper {
+    position: relative;
+    flex-grow: 1; /* занимает доступное пространство */
+    max-width: 45%;
+    height: 100%; /* растягиваем на всю высоту обертки */
+    overflow: hidden;
+    cursor: zoom-in;
+    border: 1px solid black;
+}
