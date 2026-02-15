@@ -3,7 +3,7 @@ import productImage from '../../images/pictures/testTShirt.png';
 import { useState } from 'react';
 
 export default function ProductList() {
-    const products = [1, 2, 3, 4];
+    const products = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
     const sizes = ['XS', 'S', 'M', 'L', 'XL'];
 
     // Состояние выбранного размера для каждой карточки

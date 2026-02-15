@@ -1,0 +1,80 @@
+/* Orders.css */
+.orders {
+    min-height: 100vh;
+    padding: 50px;
+    background-color: #fff;
+    font-family: 'Inter', sans-serif;
+    color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.orders__content {
+    width: 90%;
+    max-width: 1200px;
+}
+
+.orders__title {
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+}
+
+.orders__empty {
+    font-size: 24px;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.orders__table {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.orders__row {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    padding: 25px 30px;
+    border: 2px solid #000;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.orders__row:hover {
+    background-color: #e0e0e0;
+}
+
+.orders__image {
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.orders__info {
+    flex: 1;
+}
+
+.orders__id {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.orders__name {
+    font-size: 28px;
+    font-weight: 500;
+}
+
+.orders__qty {
+    font-size: 24px;
+    font-weight: 500;
+    min-width: 140px;
+    text-align: right;
+}
