@@ -1,0 +1,130 @@
+.product-list {
+    width: 100%;
+    padding: 140px 0;
+    background: #ffffff;
+    color: #000;
+}
+
+.product-list__content {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.product-list__title {
+    font-size: 64px;
+    font-weight: 700;
+    margin-bottom: 100px;
+    letter-spacing: -2px;
+}
+
+/* Сетка */
+.product-list__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 80px 60px;
+}
+
+/* Карточка */
+.product-card {
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.35s ease;
+    border: 1px solid black;
+    padding: 10px;
+    cursor: pointer;
+}
+
+/* Обёртка */
+.product-card__image-wrapper {
+    overflow: hidden;
+}
+
+/* Картинка */
+.product-card__image {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    filter: grayscale(100%);
+    transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* Название */
+.product-card__title {
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Цена */
+.product-card__price {
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-align: center;
+    color: #454545;
+}
+
+/* Единственный аккуратный hover */
+.product-card:hover {
+    transform: translateY(-6px);
+}
+
+.product-card:hover .product-card__image {
+    transform: scale(1.04);
+}
+
+/* Размеры */
+.product-card__sizes {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px 0 25px 0;
+}
+
+.product-card__size {
+    width: 38px;
+    height: 38px;
+    background: transparent;
+    border: 1px solid #000;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+/* Hover размера */
+.product-card__size:hover {
+    background: #000;
+    color: #fff;
+    border: 1px solid white;
+}
+
+/* Кнопка */
+.product-card__button {
+    width: 100%;
+    padding: 14px 0;
+    background: #000;
+    color: #fff;
+    border: none;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    border-radius: 4px;
+}
+
+.product-card__button:hover {
+    background: #fff;
+    color: #000;
+    border: 1px solid black;
+}
+
+/* Hover кнопки */
+.product-card__button:hover {
+    opacity: 0.85;
+}
