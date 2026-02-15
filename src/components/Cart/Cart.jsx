@@ -34,7 +34,7 @@ export default function Cart() {
     return (
         <main className='cart'>
             <div className='cart__content'>
-                <h2 className='cart__title'>Ваша корзина</h2>
+                <h2 className='cart__title'>корзина</h2>
 
                 {cartItems.length === 0 ? (
                     <p className='cart__empty'>Корзина пуста</p>

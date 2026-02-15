@@ -78,3 +78,105 @@
     min-width: 140px;
     text-align: right;
 }
+
+@media (max-width: 1200px) {
+
+    .orders {
+      padding: 40px 30px;
+    }
+  
+    .orders__title {
+      font-size: 36px;
+    }
+  
+    .orders__row {
+      gap: 20px;
+      padding: 20px;
+    }
+  
+    .orders__image {
+      width: 140px;
+      height: 140px;
+    }
+  
+    .orders__id,
+    .orders__name {
+      font-size: 22px;
+    }
+  
+    .orders__qty {
+      font-size: 20px;
+    }
+  }
+
+  @media (max-width: 768px) {
+
+    .orders {
+      padding: 30px 20px;
+    }
+  
+    .orders__title {
+      font-size: 28px;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+  
+    .orders__table {
+      gap: 20px;
+    }
+  
+    .orders__row {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 15px;
+      padding: 18px;
+    }
+  
+    .orders__image {
+      width: 100%;
+      height: 220px;
+    }
+  
+    .orders__info {
+      width: 100%;
+    }
+  
+    .orders__id {
+      font-size: 18px;
+    }
+  
+    .orders__name {
+      font-size: 18px;
+    }
+  
+    .orders__qty {
+      font-size: 16px;
+      text-align: left;
+      min-width: auto;
+    }
+  }
+
+  @media (max-width: 480px) {
+
+    .orders {
+      padding: 20px 15px;
+    }
+  
+    .orders__title {
+      font-size: 24px;
+    }
+  
+    .orders__image {
+      height: 180px;
+    }
+  
+    .orders__id,
+    .orders__name {
+      font-size: 16px;
+    }
+  
+    .orders__qty {
+      font-size: 14px;
+    }
+  }
+  

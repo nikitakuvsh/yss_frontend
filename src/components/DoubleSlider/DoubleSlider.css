@@ -55,3 +55,78 @@
     scroll-margin-top: 0;     /* на всякий случай */
   }
   
+  @media (max-width: 1024px) {
+
+    .double-slider-wrapper {
+      height: 70vh;
+    }
+  
+    .double-slider__image {
+      width: 50%;
+      height: 400px;
+      object-fit: cover;
+    }
+  
+    .double-slider__overlay-text {
+      font-size: 50px;
+      top: 25%;
+    }
+  
+    .text--under {
+      font-size: 18px;
+      letter-spacing: 0.3em;
+      top: 35%;
+    }
+  }
+
+  @media (max-width: 768px) {
+
+    .double-slider-wrapper {
+      height: 60vh;
+      min-height: 400px;
+    }
+  
+    .double-slider__slide {
+      display: flex !important;
+      flex-direction: row !important; /* важно: не колонка */
+    }
+  
+    .double-slider__image {
+      width: 50%;
+      height: 260px;
+      object-fit: cover;
+    }
+  
+    .double-slider__overlay-text {
+      font-size: 32px;
+      top: 35%;
+      padding: 0 10px;
+    }
+  
+    .text--under {
+      font-size: 13px;
+      letter-spacing: 0.15em;
+      top: 50%;
+    }
+  }
+
+  @media (max-width: 480px) {
+
+    .double-slider-wrapper {
+      height: 50vh;
+    }
+  
+    .double-slider__image {
+      height: 200px;
+    }
+  
+    .double-slider__overlay-text {
+      font-size: 24px;
+    }
+  
+    .text--under {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+    }
+  }
+  

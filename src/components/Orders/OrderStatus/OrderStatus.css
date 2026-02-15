@@ -4,6 +4,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin-bottom: 100px;
 }
 
 .order-attention {
@@ -17,6 +18,7 @@
     --webkit-user-select: none;
     transition: all 0.25s ease-in-out;
     cursor: pointer;
+    display: none !important;
 }
 
 .order-attention:hover {
@@ -36,6 +38,11 @@
 
 .status-processing .status-text {
     color: #ed825b;
+}
+
+.status-props {
+    margin-bottom: 15px;
+    margin-top: 10px;
 }
 
 .status-accepted .status-text {

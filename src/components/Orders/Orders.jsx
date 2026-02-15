@@ -21,7 +21,7 @@ export default function Orders() {
   return (
     <main className='orders'>
       <div className='orders__content'>
-        <h2 className='orders__title'>Мои заказы</h2>
+        <h2 className='orders__title'>заказы</h2>
 
         {orders.length === 0 ? (
           <p className='orders__empty'>Заказов пока нет</p>

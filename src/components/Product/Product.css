@@ -158,3 +158,122 @@
     cursor: zoom-in;
     border: 1px solid black;
 }
+
+@media (max-width: 1200px) {
+
+    .product__wrapper {
+      padding: 40px;
+      gap: 20px;
+    }
+  
+    .product__thumbnail {
+      width: 120px;
+      height: 120px;
+    }
+  
+    .product__actions {
+      width: 260px;
+    }
+  
+    .product__description,
+    .product__delivery {
+      font-size: 16px;
+    }
+  }
+
+  @media (max-width: 992px) {
+
+    .product {
+      min-height: auto;
+    }
+  
+    .product__wrapper {
+      flex-direction: column;
+      padding: 25px 20px;
+      gap: 25px;
+    }
+  
+    /* Миниатюры горизонтально */
+    .product__thumbnails {
+      flex-direction: row;
+      justify-content: center;
+      order: 2;
+    }
+  
+    .product__thumbnail {
+      width: 90px;
+      height: 90px;
+    }
+  
+    /* Главное фото */
+    .product__main-image-wrapper {
+      max-width: 100%;
+      height: auto;
+      order: 1;
+    }
+  
+    .product__main-image {
+      width: 100%;
+      height: auto;
+    }
+  
+    /* Отключаем лупу на тач-устройствах */
+    .product__zoom {
+      display: none;
+    }
+  
+    /* Блок действий */
+    .product__actions {
+      width: 100%;
+      order: 3;
+    }
+  
+    .product__sizes {
+      margin-top: 20px;
+      justify-content: center;
+    }
+  
+    .product__size-button {
+      padding: 8px 14px;
+      font-size: 14px;
+    }
+  
+    .product__add-to-cart {
+      margin-top: 20px;
+      padding: 14px;
+      font-size: 15px;
+    }
+  
+    .product__description,
+    .product__delivery {
+      font-size: 15px;
+    }
+  
+    .product__description h4,
+    .product__delivery h4 {
+      font-size: 18px;
+    }
+  }
+
+  @media (max-width: 480px) {
+
+    .product__thumbnail {
+      width: 75px;
+      height: 75px;
+    }
+  
+    .product__size-button {
+      padding: 6px 12px;
+      font-size: 13px;
+    }
+  
+    .product__add-to-cart {
+      font-size: 14px;
+    }
+  
+    .product__description,
+    .product__delivery {
+      font-size: 14px;
+    }
+  }
+  
