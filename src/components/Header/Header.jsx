@@ -2,9 +2,16 @@ import './Header.css';
 import headerLogo from '../../images/pictures/header-logo.png';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 export default function Header() {
-    const [activeLink, setActiveLink] = useState('Главная');
+    const location = useLocation();
+
+    const lastSegment = location.pathname
+        .split('/')
+        .filter(Boolean)
+        .pop() || 'Главная';
+
     const [menuOpen, setMenuOpen] = useState(false);
 
     const links = [
@@ -13,10 +20,18 @@ export default function Header() {
         { name: 'Корзина', path: '/cart' }
     ];
 
+    const getActiveByPath = () => {
+        const found = links.find(link => link.path === location.pathname);
+        return found ? found.name : 'Главная';
+    };
+
+    const [activeLink, setActiveLink] = useState(getActiveByPath());
+
     const handleClick = (name) => {
         setActiveLink(name);
-        setMenuOpen(false); // закрываем меню после клика
+        setMenuOpen(false);
     };
+
 
     return (
         <header className='header'>
@@ -43,7 +58,7 @@ export default function Header() {
                     <Link
                         key={link.name}
                         to={link.path}
-                        className={`header__nav-link ${activeLink === link.name ? 'link--active' : ''}`}
+                        className={`header__nav-link ${location.pathname === link.path ? 'link--active' : ''}`}
                         onClick={() => handleClick(link.name)}
                     >
                         {link.name}

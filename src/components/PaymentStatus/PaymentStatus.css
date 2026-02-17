@@ -1,0 +1,88 @@
+.payment-status {
+    background: #fff;
+    color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+  }
+  
+  .payment-status__content {
+    text-align: center;
+    max-width: 600px;
+    width: 100%;
+  }
+  
+  .payment-status__animation {
+    max-width: 320px;
+    margin: 0 auto 40px;
+  }
+  
+  .payment-status__title {
+    font-size: 28px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: 0.3s ease;
+  }
+  
+  /* Цвета статусов */
+  
+  .payment-status__title--success {
+    color: #000;
+  }
+  
+  .payment-status__title--failed {
+    color: #000;
+  }
+  
+  .payment-status__title--pending {
+    color: #000;
+    opacity: 0.7;
+  }
+  
+ .payment-status__button {
+    margin-top: 30px;
+    padding: 15px 30px;
+    background: #000;
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+    border: 1px solid white;
+    transition: all 0.15s ease-in-out;
+ }
+
+ .payment-status__button:hover {
+    background: #fff;
+    color: #000;
+    border: 1px solid black;
+ }
+  
+  @media (max-width: 768px) {
+    .payment-status__animation {
+      max-width: 220px;
+    }
+  
+    .payment-status__title {
+      font-size: 22px;
+    }
+
+    .payment-status__button {
+        font-size: 16px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .payment-status__animation {
+      max-width: 180px;
+    }
+  
+    .payment-status__title {
+      font-size: 18px;
+    }
+
+    .payment-status__button {
+        font-size: 14px;
+    }
+  }
+  
