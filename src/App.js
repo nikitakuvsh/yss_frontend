@@ -22,7 +22,7 @@ export default function App() {
             <Route path="/" element={
               <>
                 <UnderHeader />
-                <DoubleSlider />
+                {/* <DoubleSlider /> */}
                 <ProductList />
               </>
             } />

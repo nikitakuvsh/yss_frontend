@@ -1,9 +1,15 @@
 import './PageNotFound.css';
+import Lottie from 'lottie-react';
+import notFoundAnimation from './animations/404.json';
 
-export default function PageNotFound(){
+export default function PageNotFound() {
     return (
         <section className='page-not-found'>
-            <h2 className='page-not-found__title'>Страница не найдена :(</h2>
+            <Lottie
+                animationData={notFoundAnimation}
+                loop={true}
+                style={{ width: '50em', height: '50%' }}
+            />
         </section>
     );
 }

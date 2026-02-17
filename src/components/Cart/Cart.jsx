@@ -1,6 +1,9 @@
 import './Cart.css';
 import { useState } from 'react';
 import sampleTShirt from '../../images/pictures/testTShirt.png';
+import CartModal from './CartModal/CartModal';
+import Lottie from 'lottie-react';
+import notFoundAnimation from './animations/not-found.json';
 
 export default function Cart() {
     // Инициализируем товары
@@ -8,6 +11,8 @@ export default function Cart() {
         { id: 1, name: 'Футболка Bozy Brand', size: 'M', price: 3500, qty: 1, img: sampleTShirt },
         { id: 2, name: 'Футболка Cool Brand', size: 'L', price: 4200, qty: 2, img: sampleTShirt },
     ]);
+
+    const [openCartModal, setOpenCartModal] = useState(false);
 
     // Увеличение количества
     const incrementQty = (id) => {
@@ -37,7 +42,14 @@ export default function Cart() {
                 <h2 className='cart__title'>корзина</h2>
 
                 {cartItems.length === 0 ? (
-                    <p className='cart__empty'>Корзина пуста</p>
+                    <div className='cart__empty-block'>
+                        <Lottie 
+                            animationData={notFoundAnimation} 
+                            loop={true}
+                            style={{ width: 350, height: 350}} 
+                        />
+                        <p className='cart__empty'>Корзина пуста</p>
+                    </div>
                 ) : (
                     <div className='cart__table'>
                         {cartItems.map(item => (
@@ -60,10 +72,12 @@ export default function Cart() {
                             <span>Итого:</span>
                             <span>{total} Р</span>
                         </div>
-                        <button className='cart__checkout'>Оформить заказ</button>
+                        <button className='cart__checkout' onClick={() => setOpenCartModal(true)}>Оформить заказ</button>
                     </div>
                 )}
             </div>
+
+            {openCartModal && (<CartModal onClose={() => setOpenCartModal(false)} totalPrice={total} />)}
         </main>
     );
 }

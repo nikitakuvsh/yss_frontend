@@ -1,0 +1,183 @@
+/* Overlay */
+
+.cart-modal__overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(2px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    z-index: 1000;
+  }
+  
+  /* Modal */
+  
+  .cart-modal {
+    width: 100%;
+    max-width: 640px;
+    background: #ffffff;
+    border: 1px solid #000;
+    padding: 50px 40px;
+    color: #000;
+  }
+  
+  /* Content */
+  
+  .cart-modal__content {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+  }
+  
+  .cart-modal__title {
+    font-size: 28px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  
+  /* Inputs */
+  
+  .cart-modal__content input,
+  .cart-modal__content select {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #000;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #000;
+    transition: 0.2s ease;
+    cursor: pointer;
+  }
+  
+  .cart-modal__content input::placeholder {
+    color: #000;
+    opacity: 0.4;
+  }
+  
+  .cart-modal__content input:focus,
+  .cart-modal__content select:focus {
+    outline: none;
+    border-bottom: 2px solid #000;
+  }
+  
+  /* Buttons */
+  
+  .cart-modal__buttons {
+    display: flex;
+    gap: 16px;
+    margin-top: 10px;
+  }
+  
+  .cart-modal__button {
+    flex: 1;
+    padding: 14px 0;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    background: #000;
+    border: 1px solid #000;
+    color: #fff;
+    cursor: pointer;
+    transition: 0.2s ease;
+  }
+  
+  .cart-modal__button:hover {
+    background: #fff;
+    color: #000;
+  }
+  
+  .button--cancel {
+    background: #fff;
+    color: #000;
+  }
+  
+  .button--cancel:hover {
+    background: #bf0606;
+    color: #fff;
+    border: none;
+  }
+
+  .cart-modal__descr {
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  /* ============================= */
+  /* 📱 АДАПТИВ */
+  /* ============================= */
+  
+  @media (max-width: 1024px) {
+    .cart-modal {
+      padding: 40px 30px;
+    }
+  
+    .cart-modal__title {
+      font-size: 24px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .cart-modal {
+      padding: 30px 24px;
+    }
+  
+    .cart-modal__buttons {
+      flex-direction: column;
+    }
+  
+    .cart-modal__button {
+      width: 100%;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .cart-modal {
+      padding: 24px 18px;
+    }
+  
+    .cart-modal__title {
+      font-size: 20px;
+    }
+  
+    .cart-modal__content input,
+    .cart-modal__content select {
+      font-size: 14px;
+    }
+  
+    .cart-modal__button {
+      font-size: 13px;
+      padding: 12px 0;
+    }
+
+    .cart-modal__descr {
+        font-size: 16px;
+      }
+  }
+  
+  /* Большие экраны */
+  
+  @media (min-width: 1920px) {
+    .cart-modal {
+      max-width: 800px;
+      padding: 60px 60px;
+    }
+  
+    .cart-modal__title {
+      font-size: 32px;
+    }
+  
+    .cart-modal__content input,
+    .cart-modal__content select {
+      font-size: 18px;
+    }
+  
+    .cart-modal__button {
+      font-size: 16px;
+    }
+  }
+  
