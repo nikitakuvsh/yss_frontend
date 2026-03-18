@@ -37,7 +37,7 @@
 }
 
 .footer__link:hover {
-    color: #f08c00;
+    text-decoration: underline solid black;
 }
 
 .footer__socials {

@@ -1,83 +1,127 @@
 import './Cart.css';
-import { useState } from 'react';
-import sampleTShirt from '../../images/pictures/testTShirt.png';
+import { useState, useEffect } from 'react';
 import CartModal from './CartModal/CartModal';
 import Lottie from 'lottie-react';
 import notFoundAnimation from './animations/not-found.json';
 
+const BACKEND_URL = process.env.REACT_APP_BACKEND_API;
+
 export default function Cart() {
-    // Инициализируем товары
-    const [cartItems, setCartItems] = useState([
-        { id: 1, name: 'Футболка Bozy Brand', size: 'M', price: 3500, qty: 1, img: sampleTShirt },
-        { id: 2, name: 'Футболка Cool Brand', size: 'L', price: 4200, qty: 2, img: sampleTShirt },
-    ]);
+    const [cartItems, setCartItems] = useState(() => {
+        return JSON.parse(localStorage.getItem("cart")) || [];
+    });
 
     const [openCartModal, setOpenCartModal] = useState(false);
 
-    // Увеличение количества
-    const incrementQty = (id) => {
-        setCartItems(cartItems.map(item =>
-            item.id === id ? { ...item, qty: item.qty + 1 } : item
-        ));
+    useEffect(() => {
+        localStorage.setItem("cart", JSON.stringify(cartItems));
+    }, [cartItems]);
+
+    const incrementQty = (id, size) => {
+        setCartItems(prev =>
+            prev.map(item =>
+                item.id === id && item.size === size
+                    ? { ...item, quantity: item.quantity + 1 }
+                    : item
+            )
+        );
     };
 
-    // Уменьшение количества
-    const decrementQty = (id) => {
-        setCartItems(cartItems.map(item =>
-            item.id === id ? { ...item, qty: item.qty > 1 ? item.qty - 1 : 1 } : item
-        ));
+    const decrementQty = (id, size) => {
+        setCartItems(prev =>
+            prev.map(item =>
+                item.id === id && item.size === size
+                    ? { ...item, quantity: Math.max(1, item.quantity - 1) }
+                    : item
+            )
+        );
     };
 
-    // Удаление товара
-    const removeItem = (id) => {
-        setCartItems(cartItems.filter(item => item.id !== id));
+    const removeItem = (id, size) => {
+        setCartItems(prev =>
+            prev.filter(item => !(item.id === id && item.size === size))
+        );
     };
 
-    // Общая сумма
-    const total = cartItems.reduce((acc, item) => acc + item.price * item.qty, 0);
+    const total = cartItems.reduce(
+        (acc, item) => acc + item.price * item.quantity,
+        0
+    );
 
     return (
         <main className='cart'>
             <div className='cart__content'>
-                <h2 className='cart__title'>корзина</h2>
+                <h2 className='cart__title'>Корзина</h2>
 
                 {cartItems.length === 0 ? (
                     <div className='cart__empty-block'>
-                        <Lottie 
-                            animationData={notFoundAnimation} 
+                        <Lottie
+                            animationData={notFoundAnimation}
                             loop={true}
-                            style={{ width: 350, height: 350}} 
+                            style={{ width: 350, height: 350 }}
                         />
                         <p className='cart__empty'>Корзина пуста</p>
                     </div>
                 ) : (
                     <div className='cart__table'>
                         {cartItems.map(item => (
-                            <div key={item.id} className='cart__row'>
-                                <img className='cart__image' src={item.img} alt={item.name} />
+                            <div
+                                key={`${item.id}_${item.size}`}
+                                className='cart__row'
+                            >
+                                <img
+                                    className='cart__image'
+                                    src={`${BACKEND_URL}/${item.image}`}
+                                    alt={item.title}
+                                />
+
                                 <div className='cart__info'>
-                                    <h4 className='cart__name'>{item.name}</h4>
-                                    <p className='cart__size'>Размер: {item.size}</p>
+                                    <h4 className='cart__name'>{item.title}</h4>
+                                    <p className='cart__size'>
+                                        Размер: {item.size}
+                                    </p>
                                 </div>
+
                                 <div className='cart__qty'>
-                                    <button onClick={() => decrementQty(item.id)}>-</button>
-                                    <span>{item.qty}</span>
-                                    <button onClick={() => incrementQty(item.id)}>+</button>
+                                    <button onClick={() => decrementQty(item.id, item.size)}>-</button>
+                                    <span>{item.quantity}</span>
+                                    <button onClick={() => incrementQty(item.id, item.size)}>+</button>
                                 </div>
-                                <div className='cart__price'>{item.price * item.qty} Р</div>
-                                <button className='cart__remove' onClick={() => removeItem(item.id)}>×</button>
+
+                                <div className='cart__price'>
+                                    {item.price * item.quantity} ₽
+                                </div>
+
+                                <button
+                                    className='cart__remove'
+                                    onClick={() => removeItem(item.id, item.size)}
+                                >
+                                    ×
+                                </button>
                             </div>
                         ))}
+
                         <div className='cart__total'>
                             <span>Итого:</span>
-                            <span>{total} Р</span>
+                            <span>{total} ₽</span>
                         </div>
-                        <button className='cart__checkout' onClick={() => setOpenCartModal(true)}>Оформить заказ</button>
+
+                        <button
+                            className='cart__checkout'
+                            onClick={() => setOpenCartModal(true)}
+                        >
+                            Оформить заказ
+                        </button>
                     </div>
                 )}
             </div>
 
-            {openCartModal && (<CartModal onClose={() => setOpenCartModal(false)} totalPrice={total} />)}
+            {openCartModal && (
+                <CartModal
+                    onClose={() => setOpenCartModal(false)}
+                    totalPrice={total}
+                />
+            )}
         </main>
     );
 }

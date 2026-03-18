@@ -13,6 +13,32 @@ import OrderStatus from './components/Orders/OrderStatus/OrderStatus';
 import PaymentStatus from './components/PaymentStatus/PaymentStatus';
 
 export default function App() {
+
+  const handleAddToCart = (product, selectedSize) => {
+    if (!selectedSize) return;
+
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    const existingItem = cart.find(
+      item => item.id === product.id && item.size === selectedSize
+    );
+
+    if (existingItem) {
+      existingItem.quantity += 1;
+    } else {
+      cart.push({
+        id: product.id,
+        title: product.title,
+        price: product.price,
+        image: product.images?.[0],
+        size: selectedSize,
+        quantity: 1
+      });
+    }
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+  };
+
   return (
     <Router>
       <div className="app">
@@ -24,11 +50,11 @@ export default function App() {
               <>
                 <UnderHeader />
                 {/* <DoubleSlider /> */}
-                <ProductList />
+                <ProductList onAddToCart={handleAddToCart}/>
               </>
             } />
             <Route path="*" element={<PageNotFound />} />
-            <Route path='/product' element={<Product />} />
+            <Route path='/product/:id' element={<Product onAddToCart={handleAddToCart} />} />
             <Route path='/cart' element={<Cart />} />
             <Route path='/orders' element={<Orders />} />
             <Route path='/order/:id' element={<OrderStatus />} />

@@ -45,8 +45,8 @@
     position: absolute;
     right: -250px;
     top: 50%;
-    transform: translateY(-50%);
     z-index: -1; /* уводим под текст */
+    transform: rotateZ(5deg) translateY(-50%) translateX(-5%);
 }
 
 /* Картинка */

@@ -1,13 +1,22 @@
 import './ProductList.css';
-import productImage from '../../images/pictures/testTShirt.png';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import ModalMessage from '../ModalMessage/ModalMessage';
 
-export default function ProductList() {
-    const products = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-    const sizes = ['XS', 'S', 'M', 'L', 'XL'];
+export default function ProductList({ onAddToCart }) {
+    const API = process.env.REACT_APP_BACKEND_API;
 
-    // Состояние выбранного размера для каждой карточки
+    const [products, setProducts] = useState([]);
     const [selectedSizes, setSelectedSizes] = useState({});
+    const [modalMessageView, setModalMessageView] = useState(false);
+    const [isError, setIsError] = useState(false);
+    const [modalMessage, setModalMessage] = useState('');
+
+    useEffect(() => {
+        fetch(API + "/items")
+            .then(res => res.json())
+            .then(data => setProducts(data))
+            .catch(err => console.error("Ошибка загрузки:", err));
+    }, []);
 
     const handleSelectSize = (productId, size) => {
         setSelectedSizes(prev => ({ ...prev, [productId]: size }));
@@ -19,39 +28,39 @@ export default function ProductList() {
                 <h2 className='product-list__title'>В нашем ассортименте</h2>
 
                 <div className='product-list__grid'>
-                    {products.map((productId) => {
-                        const selectedSize = selectedSizes[productId] || '';
+                    {products.map((product) => {
+                        const selectedSize = selectedSizes[product.id] || '';
 
                         return (
                             <div
-                                key={productId}
+                                key={product.id}
                                 className='product-card'
-                                onClick={() => window.location.href = '/product'}
+                                onClick={() => window.location.href = '/product/' + product.id}
                             >
                                 <div className='product-card__image-wrapper'>
                                     <img
                                         className='product-card__image'
-                                        alt='T-Shirt Bozy Brand'
-                                        src={productImage}
+                                        alt={product.title}
+                                        src={`${API}/${product.images?.[0]}`}
                                     />
                                 </div>
 
                                 <h4 className='product-card__title'>
-                                    ФУТБОЛКА BOZY BRAND
+                                    {product.title}
                                 </h4>
 
                                 <p className='product-card__price'>
-                                    3500 Р
+                                    {product.price} ₽
                                 </p>
 
                                 <div className='product-card__sizes'>
-                                    {sizes.map(size => (
+                                    {product.sizes?.map(size => (
                                         <button
                                             key={size}
                                             className={`product-card__size ${selectedSize === size ? 'selected' : ''}`}
                                             onClick={(e) => {
                                                 e.stopPropagation();
-                                                handleSelectSize(productId, size);
+                                                handleSelectSize(product.id, size);
                                             }}
                                         >
                                             {size}
@@ -61,7 +70,19 @@ export default function ProductList() {
 
                                 <button
                                     className='product-card__button'
-                                    disabled={!selectedSize}
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        if (!selectedSize) {
+                                            setIsError(true);
+                                            setModalMessage('Сначала необходимо выбрать размер!');
+                                            setModalMessageView(true);
+                                        } else {
+                                            onAddToCart(product, selectedSize);
+                                            setIsError(false);
+                                            setModalMessage('Товар успешно добавлен в корзину!');
+                                            setModalMessageView(true);
+                                        }
+                                    }}
                                 >
                                     Добавить в корзину
                                 </button>
@@ -70,6 +91,8 @@ export default function ProductList() {
                     })}
                 </div>
             </div>
+
+            {modalMessageView && (<ModalMessage message={modalMessage} isError={isError} onClose={() => setModalMessageView(false)} />)}
         </main>
     );
 }

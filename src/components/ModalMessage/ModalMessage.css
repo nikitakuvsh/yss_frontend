@@ -1,0 +1,77 @@
+.app-toast-message {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    transform: translateX(100%);
+    animation: slideIn 0.5s forwards;
+    width: 300px;
+    text-align: center;
+    overflow: hidden;
+    display: block;
+    margin-bottom: 15px;
+    border-radius: 8px;
+}
+
+.app-toast-message:nth-child(2) {
+    top: 90px;
+}
+
+.app-toast-message:nth-child(3) {
+    top: 160px;
+}
+
+.app-toast-message-content {
+    color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 300px;
+    font-size: 16px;
+    position: relative;
+}
+
+.app-toast-message-content .app-toast-message-close {
+    position: absolute;
+    top: 5px;
+    right: 20px !important;
+    font-size: 20px;
+    cursor: pointer;
+    color: white;
+    z-index: 1000;
+}
+
+.app-toast-message--success {
+    background-color: #4CAF50;
+}
+
+.app-toast-message--error {
+    background-color: #FF6B6B;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideOut {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(100%);
+        right: 0;
+    }
+}
+
+.app-toast-message-close {
+    animation: slideOut 0.5s forwards;
+    overflow: hidden;
+}
+

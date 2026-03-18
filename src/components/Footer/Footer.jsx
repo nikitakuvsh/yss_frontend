@@ -5,6 +5,8 @@ import telegramIcon from '../../images/icons/telegaicon.png';
 import vkIcon from '../../images/icons/vkicon.png';
 
 export default function Footer() {
+    const currentYear = new Date().getFullYear();
+
     return (
         <footer className='footer'>
             <div className='footer__content'>
@@ -22,7 +24,7 @@ export default function Footer() {
                     </div>
                 </div>
                 <div className='footer__bottom'>
-                    <p>© 2026 Young Style Shop. Все права защищены.</p>
+                    <p>© {currentYear} Young Style Shop. Все права защищены.</p>
                 </div>
             </div>
         </footer>

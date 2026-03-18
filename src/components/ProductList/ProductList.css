@@ -43,8 +43,7 @@
 .product-card__image {
     width: 100%;
     height: auto;
-    object-fit: contain;
-    filter: grayscale(100%);
+    object-fit: cover;
     transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
